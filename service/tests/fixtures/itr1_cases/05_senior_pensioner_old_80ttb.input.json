@@ -1,0 +1,103 @@
+{
+  "description": "Senior pensioner (66), old regime, 80TTB on bank interest, no 234B/C (s.207(2)), SA tax paid.",
+  "today": "2026-07-05",
+  "form": "ITR1",
+  "ay": "2026-27",
+  "request": {
+    "regime": "old",
+    "income": {
+      "regime": "both",
+      "age_category": "senior",
+      "residential_status": "resident",
+      "filing_date": "2026-07-10",
+      "income": {
+        "salary": {
+          "gross": 600000,
+          "form16_17_1": 600000,
+          "form16_17_2": 0,
+          "form16_17_3": 0
+        },
+        "other_sources": {
+          "savings_interest": 15000,
+          "fd_interest": 120000
+        }
+      },
+      "deductions": {
+        "80c": 100000
+      },
+      "taxes_paid": {
+        "tds": 12000,
+        "self_assessment": [
+          {
+            "date": "2026-07-05",
+            "amount": 5680
+          }
+        ]
+      },
+      "source_totals": {
+        "form16_gross_salary": 600000,
+        "form16_total_tds": 0,
+        "form26as_total_tds": 12000,
+        "ais_total_tds": 12000,
+        "ais_savings_interest": 15000
+      }
+    },
+    "filer": {
+      "pan": "ABCPE1234F",
+      "aadhaar_no": "999911112222",
+      "name": {
+        "first_name": "Kamala",
+        "last_name": "Iyer"
+      },
+      "father_name": "Subramanian Iyer",
+      "dob": "1959-08-20",
+      "address": {
+        "residence_no": "12B",
+        "locality_or_area": "Kothrud",
+        "city_or_town_or_district": "Pune",
+        "state_code": "19",
+        "pin_code": 411038,
+        "mobile_no": "9876543210",
+        "email": "asha@example.com"
+      },
+      "employer_category": "PEO",
+      "bank_accounts": [
+        {
+          "ifsc": "HDFC0001234",
+          "bank_name": "HDFC Bank",
+          "account_no": "50100123456789",
+          "account_type": "SB",
+          "use_for_refund": true
+        }
+      ],
+      "salary_tds": [
+        {
+          "tan": "CHNP33333C",
+          "employer_name": "Former Employer Pension Fund",
+          "income_chargeable": 550000,
+          "tds": 0
+        }
+      ],
+      "other_tds": [
+        {
+          "tan": "CHNS44444D",
+          "deductor_name": "State Bank of India",
+          "amount_paid": 120000,
+          "tds_deducted": 12000,
+          "tds_claimed": 12000
+        }
+      ],
+      "exempt_allowances": [],
+      "verification_place": "Pune",
+      "challans": [
+        {
+          "kind": "self_assessment",
+          "bsr_code": "0002345",
+          "date_deposited": "2026-07-05",
+          "challan_serial": "00071",
+          "amount": 5680
+        }
+      ]
+    }
+  }
+}

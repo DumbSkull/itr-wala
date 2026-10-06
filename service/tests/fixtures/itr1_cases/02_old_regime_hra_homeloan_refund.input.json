@@ -1,0 +1,103 @@
+{
+  "description": "Old regime: HRA, self-occupied home-loan interest capped at 2L, 80C/80CCD(1B)/auto-80TTA, small refund.",
+  "today": "2026-07-05",
+  "form": "ITR1",
+  "ay": "2026-27",
+  "request": {
+    "regime": "old",
+    "income": {
+      "regime": "both",
+      "age_category": "regular",
+      "residential_status": "resident",
+      "filing_date": "2026-07-10",
+      "income": {
+        "salary": {
+          "gross": 1200000,
+          "form16_17_1": 1200000,
+          "form16_17_2": 0,
+          "form16_17_3": 0,
+          "exempt_allowances": 180000,
+          "professional_tax": 2400,
+          "basic_plus_da": 600000
+        },
+        "house_property": [
+          {
+            "type": "self_occupied",
+            "interest_paid": 210000
+          }
+        ],
+        "other_sources": {
+          "savings_interest": 8000,
+          "fd_interest": 20000
+        }
+      },
+      "deductions": {
+        "80c": 150000,
+        "80ccd_1b": 50000
+      },
+      "taxes_paid": {
+        "tds": 32000
+      },
+      "source_totals": {
+        "form16_gross_salary": 1200000,
+        "form16_total_tds": 30000,
+        "form26as_total_tds": 32000,
+        "ais_total_tds": 32000,
+        "ais_savings_interest": 8000
+      }
+    },
+    "filer": {
+      "pan": "ABCPE1234F",
+      "aadhaar_no": "999911112222",
+      "name": {
+        "first_name": "Asha",
+        "last_name": "Verma"
+      },
+      "father_name": "Ramesh Verma",
+      "dob": "1990-05-14",
+      "address": {
+        "residence_no": "12B",
+        "locality_or_area": "Kothrud",
+        "city_or_town_or_district": "Pune",
+        "state_code": "19",
+        "pin_code": 411038,
+        "mobile_no": "9876543210",
+        "email": "asha@example.com"
+      },
+      "employer_category": "OTH",
+      "bank_accounts": [
+        {
+          "ifsc": "HDFC0001234",
+          "bank_name": "HDFC Bank",
+          "account_no": "50100123456789",
+          "account_type": "SB",
+          "use_for_refund": true
+        }
+      ],
+      "salary_tds": [
+        {
+          "tan": "PNEA12345B",
+          "employer_name": "Example Tech Pvt Ltd",
+          "income_chargeable": 967600,
+          "tds": 30000
+        }
+      ],
+      "other_tds": [
+        {
+          "tan": "MUMH01234C",
+          "deductor_name": "HDFC Bank",
+          "amount_paid": 20000,
+          "tds_deducted": 2000,
+          "tds_claimed": 2000
+        }
+      ],
+      "exempt_allowances": [
+        {
+          "section": "10(13A)",
+          "amount": 180000
+        }
+      ],
+      "verification_place": "Pune"
+    }
+  }
+}
