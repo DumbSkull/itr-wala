@@ -1,0 +1,250 @@
+{
+  "itr_json": {
+    "ITR": {
+      "ITR1": {
+        "CreationInfo": {
+          "SWVersionNo": "1.0",
+          "SWCreatedBy": "SW00000000",
+          "JSONCreatedBy": "SW00000000",
+          "JSONCreationDate": "2026-07-10",
+          "IntermediaryCity": "Delhi",
+          "Digest": "-"
+        },
+        "Form_ITR1": {
+          "FormName": "ITR-1",
+          "Description": "For Indls having Income from Salary, Pension, family pension and Interest",
+          "AssessmentYear": "2026",
+          "SchemaVer": "Ver1.0",
+          "FormVer": "Ver1.0"
+        },
+        "PersonalInfo": {
+          "AssesseeName": {
+            "FirstName": "ASHA",
+            "SurNameOrOrgName": "VERMA"
+          },
+          "PAN": "ABCPE1234F",
+          "Address": {
+            "ResidenceNo": "12B",
+            "LocalityOrArea": "Kothrud",
+            "CityOrTownOrDistrict": "Pune",
+            "StateCode": "19",
+            "CountryCode": "91",
+            "PinCode": 411038,
+            "CountryCodeMobile": 91,
+            "MobileNo": 9876543210,
+            "EmailAddress": "asha@example.com"
+          },
+          "SecondaryAdd": "N",
+          "DOB": "1990-05-14",
+          "EmployerCategory": "OTH",
+          "AadhaarCardNo": "999911112222"
+        },
+        "FilingStatus": {
+          "ReturnFileSec": 11,
+          "OptOutNewTaxRegime": "N",
+          "SeventhProvisio139": "N",
+          "AsseseeRepFlg": "N",
+          "ItrFilingDueDate": "2026-07-31"
+        },
+        "ITR1_IncomeDeductions": {
+          "GrossSalary": 1000000,
+          "Salary": 1000000,
+          "PerquisitesValue": 0,
+          "ProfitsInSalary": 0,
+          "NetSalary": 1000000,
+          "DeductionUs16": 75000,
+          "DeductionUs16ia": 75000,
+          "EntertainmentAlw16ii": 0,
+          "ProfessionalTaxUs16iii": 0,
+          "IncomeFromSal": 925000,
+          "PropertyDetails": [
+            {
+              "HPSNo": 1,
+              "AddressDetailWithZipCode": {
+                "AddrDetail": "Flat 304, Lake View Apartments",
+                "CityOrTownOrDistrict": "Nagpur",
+                "StateCode": "19",
+                "CountryCode": "91",
+                "PinCode": 440010
+              },
+              "PropertyOwner": "SE",
+              "PropCoOwnedFlg": "NO",
+              "ifLetOut": "L",
+              "TenantDetails": [
+                {
+                  "TenantSNo": 1,
+                  "NameofTenant": "Rohit Sharma"
+                }
+              ],
+              "Rentdetails": {
+                "AnnualLetableValue": 300000,
+                "RentNotRealized": 0,
+                "LocalTaxes": 12000,
+                "TotalUnrealizedAndTax": 12000,
+                "BalanceALV": 288000,
+                "AnnualOfPropOwned": 288000,
+                "ThirtyPercentOfBalance": 86400,
+                "IntOnBorwCap": 150000,
+                "TotalDeduct": 236400,
+                "ArrearsUnrealizedRentRcvd": 0,
+                "IncomeOfHP": 51600,
+                "Section24B": {
+                  "Section24BDtls": [
+                    {
+                      "LoanTknFrom": "B",
+                      "BankOrInstnName": "HDFC Bank",
+                      "LoanAccNoOfBankOrInstnRefNo": "HL0099887766",
+                      "DateofLoan": "2019-11-01",
+                      "TotalLoanAmt": 2500000,
+                      "LoanOutstndngAmt": 1700000,
+                      "InterestUs24B": 150000
+                    }
+                  ],
+                  "TotalInterestUs24B": 150000
+                }
+              }
+            }
+          ],
+          "TotalIncomeChargeableUnHP": 51600,
+          "IncomeOthSrc": 0,
+          "DeductionUs57iia": 0,
+          "GrossTotIncome": 976600,
+          "GrossTotIncomeIncLTCG112A": 976600,
+          "UsrDeductUndChapVIA": {
+            "Section80C": 0,
+            "Section80CCC": 0,
+            "Section80CCDEmployeeOrSE": 0,
+            "Section80CCD1B": 0,
+            "Section80CCDEmployer": 0,
+            "Section80D": 0,
+            "Section80DD": 0,
+            "Section80DDB": 0,
+            "Section80E": 0,
+            "Section80EE": 0,
+            "Section80EEA": 0,
+            "Section80EEB": 0,
+            "Section80G": 0,
+            "Section80GG": 0,
+            "Section80GGA": 0,
+            "Section80GGC": 0,
+            "Section80U": 0,
+            "Section80TTA": 0,
+            "Section80TTB": 0,
+            "AnyOthSec80CCH": 0,
+            "TotalChapVIADeductions": 0
+          },
+          "DeductUndChapVIA": {
+            "Section80C": 0,
+            "Section80CCC": 0,
+            "Section80CCDEmployeeOrSE": 0,
+            "Section80CCD1B": 0,
+            "Section80CCDEmployer": 0,
+            "Section80D": 0,
+            "Section80DD": 0,
+            "Section80DDB": 0,
+            "Section80E": 0,
+            "Section80EE": 0,
+            "Section80EEA": 0,
+            "Section80EEB": 0,
+            "Section80G": 0,
+            "Section80GG": 0,
+            "Section80GGA": 0,
+            "Section80GGC": 0,
+            "Section80U": 0,
+            "Section80TTA": 0,
+            "Section80TTB": 0,
+            "AnyOthSec80CCH": 0,
+            "TotalChapVIADeductions": 0
+          },
+          "TotalIncome": 976600
+        },
+        "ITR1_TaxComputation": {
+          "TotalTaxPayable": 37660,
+          "Rebate87A": 37660,
+          "TaxPayableOnRebate": 0,
+          "EducationCess": 0,
+          "GrossTaxLiability": 0,
+          "Section89": 0,
+          "NetTaxLiability": 0,
+          "TotalIntrstPay": 0,
+          "IntrstPay": {
+            "IntrstPayUs234A": 0,
+            "IntrstPayUs234B": 0,
+            "IntrstPayUs234C": 0,
+            "LateFilingFee234F": 0
+          },
+          "TotTaxPlusIntrstPay": 0
+        },
+        "TaxPaid": {
+          "TaxesPaid": {
+            "AdvanceTax": 0,
+            "TDS": 10000,
+            "TCS": 0,
+            "SelfAssessmentTax": 0,
+            "TotalTaxesPaid": 10000
+          },
+          "BalTaxPayable": 0
+        },
+        "Refund": {
+          "RefundDue": 10000,
+          "BankAccountDtls": {
+            "AddtnlBankDetails": [
+              {
+                "IFSCCode": "HDFC0001234",
+                "BankName": "HDFC Bank",
+                "BankAccountNo": "50100123456789",
+                "AccountType": "SB",
+                "UseForRefund": "true"
+              }
+            ]
+          }
+        },
+        "TDSonSalaries": {
+          "TDSonSalary": [
+            {
+              "EmployerOrDeductorOrCollectDetl": {
+                "TAN": "PNEA12345B",
+                "EmployerOrDeductorOrCollecterName": "Example Tech Pvt Ltd"
+              },
+              "IncChrgSal": 1000000,
+              "TotalTDSSal": 10000
+            }
+          ],
+          "TotalTDSonSalaries": 10000
+        },
+        "Verification": {
+          "Declaration": {
+            "AssesseeVerName": "ASHA VERMA",
+            "FatherName": "RAMESH VERMA",
+            "AssesseeVerPAN": "ABCPE1234F"
+          },
+          "Capacity": "S",
+          "Place": "PUNE"
+        }
+      }
+    }
+  },
+  "summary": {
+    "form": "ITR-1",
+    "ay": "2026-27",
+    "regime": "new",
+    "return_type": "original (s.139(1))",
+    "gross_total_income": 976600,
+    "deductions": 0,
+    "total_income": 976600,
+    "tax_liability": 0,
+    "interest_and_fee": 0,
+    "taxes_paid": 10000,
+    "balance_payable": 0,
+    "refund": 10000,
+    "filing_date_assumed": "2026-07-15"
+  },
+  "warnings": [
+    "blocking:SOFTWARE_ID_UNREGISTERED",
+    "info:ENGINE_ASSUMPTION",
+    "info:ENGINE_ASSUMPTION",
+    "info:INTEREST_DATE_SENSITIVE",
+    "review:INPUT_CHECK",
+    "review:SEVENTH_PROVISO_ASSUMED_NO"
+  ]
+}

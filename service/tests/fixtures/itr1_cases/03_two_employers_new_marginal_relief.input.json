@@ -1,0 +1,97 @@
+{
+  "description": "Job change (two Form 16s), new regime, 87A marginal relief, self-assessment tax paid before filing.",
+  "today": "2026-07-20",
+  "form": "ITR1",
+  "ay": "2026-27",
+  "request": {
+    "regime": "new",
+    "income": {
+      "regime": "both",
+      "age_category": "regular",
+      "residential_status": "resident",
+      "filing_date": "2026-07-25",
+      "income": {
+        "salary": {
+          "gross": 1300000,
+          "form16_17_1": 1300000,
+          "form16_17_2": 0,
+          "form16_17_3": 0
+        },
+        "other_sources": {
+          "savings_interest": 9000
+        }
+      },
+      "taxes_paid": {
+        "tds": 30000,
+        "self_assessment": [
+          {
+            "date": "2026-06-30",
+            "amount": 5400
+          }
+        ]
+      },
+      "source_totals": {
+        "form16_gross_salary": 1300000,
+        "form16_total_tds": 30000,
+        "form26as_total_tds": 30000,
+        "ais_total_tds": 30000,
+        "ais_savings_interest": 9000
+      }
+    },
+    "filer": {
+      "pan": "ABCPE1234F",
+      "aadhaar_no": "999911112222",
+      "name": {
+        "first_name": "Asha",
+        "last_name": "Verma"
+      },
+      "father_name": "Ramesh Verma",
+      "dob": "1990-05-14",
+      "address": {
+        "residence_no": "12B",
+        "locality_or_area": "Kothrud",
+        "city_or_town_or_district": "Pune",
+        "state_code": "19",
+        "pin_code": 411038,
+        "mobile_no": "9876543210",
+        "email": "asha@example.com"
+      },
+      "employer_category": "OTH",
+      "bank_accounts": [
+        {
+          "ifsc": "HDFC0001234",
+          "bank_name": "HDFC Bank",
+          "account_no": "50100123456789",
+          "account_type": "SB",
+          "use_for_refund": true
+        }
+      ],
+      "salary_tds": [
+        {
+          "tan": "BLRA11111A",
+          "employer_name": "First Employer Ltd",
+          "income_chargeable": 600000,
+          "tds": 0
+        },
+        {
+          "tan": "BLRB22222B",
+          "employer_name": "Second Employer Ltd",
+          "income_chargeable": 700000,
+          "tds": 30000
+        }
+      ],
+      "other_tds": [],
+      "exempt_allowances": [],
+      "verification_place": "Pune",
+      "challans": [
+        {
+          "kind": "self_assessment",
+          "bsr_code": "0510308",
+          "date_deposited": "2026-06-30",
+          "challan_serial": "12345",
+          "amount": 5400
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "description": "Let-out property (30% std deduction, interest deductible), new regime, full 87A rebate, TDS refunded.",
+  "today": "2026-07-10",
+  "form": "ITR1",
+  "ay": "2026-27",
+  "request": {
+    "regime": "new",
+    "income": {
+      "regime": "both",
+      "age_category": "regular",
+      "residential_status": "resident",
+      "filing_date": "2026-07-15",
+      "income": {
+        "salary": {
+          "gross": 1000000,
+          "form16_17_1": 1000000,
+          "form16_17_2": 0,
+          "form16_17_3": 0
+        },
+        "house_property": [
+          {
+            "type": "let_out",
+            "rent_received": 300000,
+            "municipal_taxes": 12000,
+            "interest_paid": 150000
+          }
+        ]
+      },
+      "taxes_paid": {
+        "tds": 10000
+      },
+      "source_totals": {
+        "form16_gross_salary": 1000000,
+        "form16_total_tds": 10000,
+        "form26as_total_tds": 10000,
+        "ais_total_tds": 10000
+      }
+    },
+    "filer": {
+      "pan": "ABCPE1234F",
+      "aadhaar_no": "999911112222",
+      "name": {
+        "first_name": "Asha",
+        "last_name": "Verma"
+      },
+      "father_name": "Ramesh Verma",
+      "dob": "1990-05-14",
+      "address": {
+        "residence_no": "12B",
+        "locality_or_area": "Kothrud",
+        "city_or_town_or_district": "Pune",
+        "state_code": "19",
+        "pin_code": 411038,
+        "mobile_no": "9876543210",
+        "email": "asha@example.com"
+      },
+      "employer_category": "OTH",
+      "bank_accounts": [
+        {
+          "ifsc": "HDFC0001234",
+          "bank_name": "HDFC Bank",
+          "account_no": "50100123456789",
+          "account_type": "SB",
+          "use_for_refund": true
+        }
+      ],
+      "salary_tds": [
+        {
+          "tan": "PNEA12345B",
+          "employer_name": "Example Tech Pvt Ltd",
+          "income_chargeable": 1000000,
+          "tds": 10000
+        }
+      ],
+      "other_tds": [],
+      "exempt_allowances": [],
+      "verification_place": "Pune",
+      "house_property": {
+        "address": {
+          "addr_detail": "Flat 304, Lake View Apartments",
+          "city_or_town_or_district": "Nagpur",
+          "state_code": "19",
+          "pin_code": 440010
+        },
+        "tenants": [
+          {
+            "name": "Rohit Sharma"
+          }
+        ],
+        "home_loans": [
+          {
+            "lender_type": "B",
+            "lender_name": "HDFC Bank",
+            "loan_account_no": "HL0099887766",
+            "sanction_date": "2019-11-01",
+            "total_loan_amount": 2500000,
+            "outstanding_amount": 1700000,
+            "interest": 150000
+          }
+        ]
+      }
+    }
+  }
+}

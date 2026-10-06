@@ -1,0 +1,242 @@
+{
+  "itr_json": {
+    "ITR": {
+      "ITR1": {
+        "CreationInfo": {
+          "SWVersionNo": "1.0",
+          "SWCreatedBy": "SW00000000",
+          "JSONCreatedBy": "SW00000000",
+          "JSONCreationDate": "2026-10-15",
+          "IntermediaryCity": "Delhi",
+          "Digest": "-"
+        },
+        "Form_ITR1": {
+          "FormName": "ITR-1",
+          "Description": "For Indls having Income from Salary, Pension, family pension and Interest",
+          "AssessmentYear": "2026",
+          "SchemaVer": "Ver1.0",
+          "FormVer": "Ver1.0"
+        },
+        "PersonalInfo": {
+          "AssesseeName": {
+            "FirstName": "ASHA",
+            "SurNameOrOrgName": "VERMA"
+          },
+          "PAN": "ABCPE1234F",
+          "Address": {
+            "ResidenceNo": "12B",
+            "LocalityOrArea": "Kothrud",
+            "CityOrTownOrDistrict": "Pune",
+            "StateCode": "19",
+            "CountryCode": "91",
+            "PinCode": 411038,
+            "CountryCodeMobile": 91,
+            "MobileNo": 9876543210,
+            "EmailAddress": "asha@example.com"
+          },
+          "SecondaryAdd": "N",
+          "DOB": "1990-05-14",
+          "EmployerCategory": "OTH",
+          "AadhaarCardNo": "999911112222"
+        },
+        "FilingStatus": {
+          "ReturnFileSec": 12,
+          "OptOutNewTaxRegime": "N",
+          "SeventhProvisio139": "N",
+          "AsseseeRepFlg": "N",
+          "ItrFilingDueDate": "2026-07-31"
+        },
+        "ITR1_IncomeDeductions": {
+          "GrossSalary": 850000,
+          "Salary": 850000,
+          "PerquisitesValue": 0,
+          "ProfitsInSalary": 0,
+          "NetSalary": 850000,
+          "DeductionUs16": 75000,
+          "DeductionUs16ia": 75000,
+          "EntertainmentAlw16ii": 0,
+          "ProfessionalTaxUs16iii": 0,
+          "IncomeFromSal": 775000,
+          "TotalIncomeChargeableUnHP": 0,
+          "IncomeOthSrc": 45000,
+          "OthersInc": {
+            "OthersIncDtlsOthSrc": [
+              {
+                "OthSrcNatureDesc": "SAV",
+                "OthSrcOthAmount": 5000
+              },
+              {
+                "OthSrcNatureDesc": "IFD",
+                "OthSrcOthAmount": 40000
+              }
+            ]
+          },
+          "DeductionUs57iia": 0,
+          "GrossTotIncome": 820000,
+          "GrossTotIncomeIncLTCG112A": 820000,
+          "UsrDeductUndChapVIA": {
+            "Section80C": 0,
+            "Section80CCC": 0,
+            "Section80CCDEmployeeOrSE": 0,
+            "Section80CCD1B": 0,
+            "Section80CCDEmployer": 0,
+            "Section80D": 0,
+            "Section80DD": 0,
+            "Section80DDB": 0,
+            "Section80E": 0,
+            "Section80EE": 0,
+            "Section80EEA": 0,
+            "Section80EEB": 0,
+            "Section80G": 0,
+            "Section80GG": 0,
+            "Section80GGA": 0,
+            "Section80GGC": 0,
+            "Section80U": 0,
+            "Section80TTA": 0,
+            "Section80TTB": 0,
+            "AnyOthSec80CCH": 0,
+            "TotalChapVIADeductions": 0
+          },
+          "DeductUndChapVIA": {
+            "Section80C": 0,
+            "Section80CCC": 0,
+            "Section80CCDEmployeeOrSE": 0,
+            "Section80CCD1B": 0,
+            "Section80CCDEmployer": 0,
+            "Section80D": 0,
+            "Section80DD": 0,
+            "Section80DDB": 0,
+            "Section80E": 0,
+            "Section80EE": 0,
+            "Section80EEA": 0,
+            "Section80EEB": 0,
+            "Section80G": 0,
+            "Section80GG": 0,
+            "Section80GGA": 0,
+            "Section80GGC": 0,
+            "Section80U": 0,
+            "Section80TTA": 0,
+            "Section80TTB": 0,
+            "AnyOthSec80CCH": 0,
+            "TotalChapVIADeductions": 0
+          },
+          "TotalIncome": 820000
+        },
+        "ITR1_TaxComputation": {
+          "TotalTaxPayable": 22000,
+          "Rebate87A": 22000,
+          "TaxPayableOnRebate": 0,
+          "EducationCess": 0,
+          "GrossTaxLiability": 0,
+          "Section89": 0,
+          "NetTaxLiability": 0,
+          "TotalIntrstPay": 5000,
+          "IntrstPay": {
+            "IntrstPayUs234A": 0,
+            "IntrstPayUs234B": 0,
+            "IntrstPayUs234C": 0,
+            "LateFilingFee234F": 5000
+          },
+          "TotTaxPlusIntrstPay": 5000
+        },
+        "TaxPaid": {
+          "TaxesPaid": {
+            "AdvanceTax": 0,
+            "TDS": 4000,
+            "TCS": 0,
+            "SelfAssessmentTax": 1000,
+            "TotalTaxesPaid": 5000
+          },
+          "BalTaxPayable": 0
+        },
+        "Refund": {
+          "RefundDue": 0,
+          "BankAccountDtls": {
+            "AddtnlBankDetails": [
+              {
+                "IFSCCode": "HDFC0001234",
+                "BankName": "HDFC Bank",
+                "BankAccountNo": "50100123456789",
+                "AccountType": "SB",
+                "UseForRefund": "true"
+              }
+            ]
+          }
+        },
+        "TDSonSalaries": {
+          "TDSonSalary": [
+            {
+              "EmployerOrDeductorOrCollectDetl": {
+                "TAN": "PNEA12345B",
+                "EmployerOrDeductorOrCollecterName": "Example Tech Pvt Ltd"
+              },
+              "IncChrgSal": 850000,
+              "TotalTDSSal": 0
+            }
+          ],
+          "TotalTDSonSalaries": 0
+        },
+        "TDSonOthThanSals": {
+          "TDSonOthThanSal": [
+            {
+              "EmployerOrDeductorOrCollectDetl": {
+                "TAN": "MUMH01234C",
+                "EmployerOrDeductorOrCollecterName": "HDFC Bank"
+              },
+              "TDSSection": "94A",
+              "AmtForTaxDeduct": 40000,
+              "DeductedYr": "2025",
+              "TotTDSOnAmtPaid": 4000,
+              "ClaimOutOfTotTDSOnAmtPaid": 4000
+            }
+          ],
+          "TotalTDSonOthThanSals": 4000
+        },
+        "TaxPayments": {
+          "TaxPayment": [
+            {
+              "BSRCode": "0510308",
+              "DateDep": "2026-10-15",
+              "SrlNoOfChaln": 54321,
+              "Amt": 1000
+            }
+          ],
+          "TotalTaxPayments": 1000
+        },
+        "Verification": {
+          "Declaration": {
+            "AssesseeVerName": "ASHA VERMA",
+            "FatherName": "RAMESH VERMA",
+            "AssesseeVerPAN": "ABCPE1234F"
+          },
+          "Capacity": "S",
+          "Place": "PUNE"
+        }
+      }
+    }
+  },
+  "summary": {
+    "form": "ITR-1",
+    "ay": "2026-27",
+    "regime": "new",
+    "return_type": "belated (s.139(4))",
+    "gross_total_income": 820000,
+    "deductions": 0,
+    "total_income": 820000,
+    "tax_liability": 0,
+    "interest_and_fee": 5000,
+    "taxes_paid": 5000,
+    "balance_payable": 0,
+    "refund": 0,
+    "filing_date_assumed": "2026-10-20"
+  },
+  "warnings": [
+    "blocking:SOFTWARE_ID_UNREGISTERED",
+    "info:ENGINE_ASSUMPTION",
+    "info:ENGINE_ASSUMPTION",
+    "info:INTEREST_DATE_SENSITIVE",
+    "review:BELATED_RETURN",
+    "review:INPUT_CHECK",
+    "review:SEVENTH_PROVISO_ASSUMED_NO"
+  ]
+}

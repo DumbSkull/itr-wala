@@ -1,0 +1,26 @@
+[project]
+name = "itr-wala-service"
+version = "0.1.0"
+description = "HTTP service + ITR portal JSON builder around the itr-wala tax engine"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "pydantic>=2.7,<3",
+  "jsonschema>=4.22,<5",
+  "uvicorn>=0.30,<1",
+  "pdfplumber>=0.11,<1",
+  "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+dev = ["httpx>=0.27", "pytest>=8", "reportlab>=4"]
+
+[tool.setuptools]
+# The upstream engine (skills/itr-wala/scripts) is loaded by path from
+# service/engine.py, not installed as a package, so it stays byte-identical
+# to upstream.
+packages = ["service", "service.json_builder", "service.json_builder.schedules", "service.parsers"]
+
+[tool.pytest.ini_options]
+testpaths = ["service/tests"]

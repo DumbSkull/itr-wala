@@ -1,0 +1,101 @@
+{
+  "description": "Belated return (s.139(4)) filed Oct 2026: 87A wipes the tax, 234F fee of 5,000 met by bank TDS + SA challan.",
+  "today": "2026-10-15",
+  "form": "ITR1",
+  "ay": "2026-27",
+  "request": {
+    "regime": "new",
+    "income": {
+      "regime": "both",
+      "age_category": "regular",
+      "residential_status": "resident",
+      "filing_date": "2026-10-20",
+      "income": {
+        "salary": {
+          "gross": 850000,
+          "form16_17_1": 850000,
+          "form16_17_2": 0,
+          "form16_17_3": 0
+        },
+        "other_sources": {
+          "savings_interest": 5000,
+          "fd_interest": 40000
+        }
+      },
+      "taxes_paid": {
+        "tds": 4000,
+        "self_assessment": [
+          {
+            "date": "2026-10-15",
+            "amount": 1000
+          }
+        ]
+      },
+      "source_totals": {
+        "form16_gross_salary": 850000,
+        "form16_total_tds": 0,
+        "form26as_total_tds": 4000,
+        "ais_total_tds": 4000,
+        "ais_savings_interest": 5000
+      }
+    },
+    "filer": {
+      "pan": "ABCPE1234F",
+      "aadhaar_no": "999911112222",
+      "name": {
+        "first_name": "Asha",
+        "last_name": "Verma"
+      },
+      "father_name": "Ramesh Verma",
+      "dob": "1990-05-14",
+      "address": {
+        "residence_no": "12B",
+        "locality_or_area": "Kothrud",
+        "city_or_town_or_district": "Pune",
+        "state_code": "19",
+        "pin_code": 411038,
+        "mobile_no": "9876543210",
+        "email": "asha@example.com"
+      },
+      "employer_category": "OTH",
+      "bank_accounts": [
+        {
+          "ifsc": "HDFC0001234",
+          "bank_name": "HDFC Bank",
+          "account_no": "50100123456789",
+          "account_type": "SB",
+          "use_for_refund": true
+        }
+      ],
+      "salary_tds": [
+        {
+          "tan": "PNEA12345B",
+          "employer_name": "Example Tech Pvt Ltd",
+          "income_chargeable": 850000,
+          "tds": 0
+        }
+      ],
+      "other_tds": [
+        {
+          "tan": "MUMH01234C",
+          "deductor_name": "HDFC Bank",
+          "amount_paid": 40000,
+          "tds_deducted": 4000,
+          "tds_claimed": 4000,
+          "tds_section": "94A"
+        }
+      ],
+      "exempt_allowances": [],
+      "verification_place": "Pune",
+      "challans": [
+        {
+          "kind": "self_assessment",
+          "bsr_code": "0510308",
+          "date_deposited": "2026-10-15",
+          "challan_serial": "54321",
+          "amount": 1000
+        }
+      ]
+    }
+  }
+}
