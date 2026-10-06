@@ -1,4 +1,4 @@
-"""ITR1_IncomeDeductions: salary, one house property, other sources,
+"""ITR1_IncomeDeductions: salary, one house property (PropertyDetails), other sources,
 Chapter VI-A, total income.
 
 Rule: every figure is either copied from the engine's computation or is a
@@ -47,7 +47,7 @@ def _salary(ctx: BuildContext) -> dict:
     if not sal:  # no salary at all
         return {
             "GrossSalary": 0, "Salary": 0, "PerquisitesValue": 0, "ProfitsInSalary": 0,
-            "IncomeNotified89A": 0, "NetSalary": 0, "DeductionUs16": 0, "DeductionUs16ia": 0,
+            "NetSalary": 0, "DeductionUs16": 0, "DeductionUs16ia": 0,
             "EntertainmentAlw16ii": 0, "ProfessionalTaxUs16iii": 0, "IncomeFromSal": 0,
         }
 
@@ -124,7 +124,6 @@ def _salary(ctx: BuildContext) -> dict:
         "Salary": s171,
         "PerquisitesValue": s172,
         "ProfitsInSalary": s173,
-        "IncomeNotified89A": 0,
     }
     if lines:
         out["AllwncExemptUs10"] = {"AllwncExemptUs10Dtls": lines, "TotalAllwncExemptUs10": total_exempt}
@@ -139,56 +138,133 @@ def _salary(ctx: BuildContext) -> dict:
     return out
 
 
+def _hp_address(ctx: BuildContext, hp_meta, self_occupied: bool) -> dict:
+    if hp_meta and hp_meta.address:
+        a = hp_meta.address
+        detail, city, state, pin = a.addr_detail, a.city_or_town_or_district, a.state_code, a.pin_code
+    else:
+        if not self_occupied:
+            ctx.log.error("HP_ADDRESS_REQUIRED", "A let-out property needs its address.",
+                          "filer.house_property.address")
+        else:
+            ctx.log.info("HP_ADDRESS_FROM_RESIDENCE",
+                         "Self-occupied property: your residential address was used as the "
+                         "property address.", "filer.house_property.address")
+        r = ctx.filer.address
+        detail = ", ".join(p for p in (r.residence_no, r.residence_name, r.road_or_street,
+                                       r.locality_or_area) if p)[:50]
+        city, state, pin = r.city_or_town_or_district, r.state_code, r.pin_code
+    return {"AddrDetail": detail, "CityOrTownOrDistrict": city, "StateCode": state,
+            "CountryCode": codes.COUNTRY_INDIA, "PinCode": pin}
+
+
+def _section_24b(ctx: BuildContext, hp_meta, interest: int) -> dict | None:
+    loans = hp_meta.home_loans if hp_meta else []
+    if not interest:
+        return None
+    if not loans:
+        ctx.log.warn("HOME_LOAN_DETAILS_MISSING",
+                     f"Home-loan interest of {interest:,} is claimed but no loan details were "
+                     "given. The portal asks for lender, account number, sanction date and "
+                     "outstanding amount - take them from the lender's interest certificate.",
+                     "filer.house_property.home_loans")
+        return None
+    if sum(l.interest for l in loans) != interest:
+        ctx.log.error("HOME_LOAN_INTEREST_MISMATCH",
+                      f"Interest on the listed loans sums to {sum(l.interest for l in loans):,} "
+                      f"but income.house_property interest_paid is {interest:,}.",
+                      "filer.house_property.home_loans")
+    return {"Section24BDtls": [{
+        "LoanTknFrom": l.lender_type,
+        "BankOrInstnName": l.lender_name,
+        "LoanAccNoOfBankOrInstnRefNo": l.loan_account_no,
+        "DateofLoan": l.sanction_date.isoformat(),
+        "TotalLoanAmt": l.total_loan_amount,
+        "LoanOutstndngAmt": l.outstanding_amount,
+        "InterestUs24B": l.interest,
+    } for l in loans], "TotalInterestUs24B": sum(l.interest for l in loans)}
+
+
 def _house_property(ctx: BuildContext) -> dict:
     props_in = ctx.income.get("income", {}).get("house_property") or []
     if isinstance(props_in, dict):
         props_in = [props_in]
     detail = ctx.heads["house_property"]["properties"]
     if not props_in:
-        return {"TotalIncomeOfHP": 0}
+        return {"TotalIncomeChargeableUnHP": 0}
     # Eligibility already rejected >1 property.
     p, d = props_in[0], detail[0]
     eng_income = rupees(d["income"])
     interest = rupees(p.get("interest_paid"))
+    meta = ctx.filer.house_property
+    self_occ = p.get("type", "self_occupied") == "self_occupied"
+    if meta and meta.co_owned:
+        ctx.log.error("HP_CO_OWNED_UNSUPPORTED",
+                      "Co-owned property isn't supported yet (the portal needs each co-owner's "
+                      "share and PAN).", "filer.house_property.co_owned")
 
-    if p.get("type", "self_occupied") == "self_occupied":
+    if self_occ:
         allowed = -eng_income  # engine: -min(interest, 2L) old / 0 new
-        out = {
-            "TypeOfHP": "S",
-            "GrossRentReceived": 0, "TaxPaidlocalAuth": 0, "AnnualValue": 0,
-            "StandardDeduction": 0, "InterestPayable": allowed,
-            "ArrearsUnrealizedRentRcvd": 0,
-            "TotalIncomeOfHP": eng_income,
+        rent = {
+            "AnnualLetableValue": 0, "RentNotRealized": 0, "LocalTaxes": 0,
+            "TotalUnrealizedAndTax": 0, "BalanceALV": 0, "AnnualOfPropOwned": 0,
+            "ThirtyPercentOfBalance": 0, "IntOnBorwCap": allowed,
+            "TotalDeduct": allowed, "ArrearsUnrealizedRentRcvd": 0, "IncomeOfHP": eng_income,
         }
         if interest and interest > allowed and ctx.regime == "old":
             ctx.log.info("HP_INTEREST_CAPPED",
                          f"Home-loan interest of {interest:,} capped at {allowed:,} (s.24(b)).")
-        return out
+        loan_interest = interest if ctx.regime == "old" else 0
+    else:
+        gross = rupees(p.get("rent_received"))
+        muni = min(rupees(p.get("municipal_taxes")), gross)
+        nav = gross - muni
+        std = rupees(0.30 * nav)
+        line_income = nav - std - interest
+        if abs(line_income - eng_income) > 1:
+            ctx.log.error("INTERNAL_HP_RECONCILE",
+                          f"Internal mismatch on let-out property: {line_income} vs engine {eng_income}. "
+                          "Please report this.")
+        if line_income < 0 and ctx.regime == "new":
+            ctx.log.error("ITR1_HP_LOSS_NEW_REGIME",
+                          "A let-out property loss can't be set off in the new regime and must be "
+                          "carried forward - ITR-1 can't carry losses forward. This needs ITR-2.",
+                          "income.house_property")
+        if line_income < -200_000:
+            ctx.log.error("ITR1_HP_LOSS_CARRY_FORWARD",
+                          "House-property loss above 2,00,000 must be carried forward - ITR-1 can't do "
+                          "that. This needs ITR-2.", "income.house_property")
+        rent = {
+            "AnnualLetableValue": gross, "RentNotRealized": 0, "LocalTaxes": muni,
+            "TotalUnrealizedAndTax": muni, "BalanceALV": nav, "AnnualOfPropOwned": nav,
+            "ThirtyPercentOfBalance": std, "IntOnBorwCap": interest,
+            "TotalDeduct": std + interest, "ArrearsUnrealizedRentRcvd": 0, "IncomeOfHP": eng_income,
+        }
+        loan_interest = interest
+        if not (meta and meta.tenants):
+            ctx.log.warn("TENANT_DETAILS_MISSING",
+                         "No tenant details given for the let-out property. The portal asks for "
+                         "the tenant's name (and PAN if rent TDS was deducted).",
+                         "filer.house_property.tenants")
 
-    rent = rupees(p.get("rent_received"))
-    muni = min(rupees(p.get("municipal_taxes")), rent)
-    nav = rent - muni
-    std = rupees(0.30 * nav)
-    line_income = nav - std - interest
-    if abs(line_income - eng_income) > 1:
-        ctx.log.error("INTERNAL_HP_RECONCILE",
-                      f"Internal mismatch on let-out property: {line_income} vs engine {eng_income}. "
-                      "Please report this.")
-    if line_income < 0 and ctx.regime == "new":
-        ctx.log.error("ITR1_HP_LOSS_NEW_REGIME",
-                      "A let-out property loss can't be set off in the new regime and must be "
-                      "carried forward - ITR-1 can't carry losses forward. This needs ITR-2.",
-                      "income.house_property")
-    if line_income < -200_000:
-        ctx.log.error("ITR1_HP_LOSS_CARRY_FORWARD",
-                      "House-property loss above 2,00,000 must be carried forward - ITR-1 can't do "
-                      "that. This needs ITR-2.", "income.house_property")
+    s24b = _section_24b(ctx, meta, loan_interest)
+    if s24b:
+        rent["Section24B"] = s24b
+    prop = {
+        "HPSNo": 1,
+        "AddressDetailWithZipCode": _hp_address(ctx, meta, self_occ),
+        "PropertyOwner": meta.owner if meta else "SE",
+        "PropCoOwnedFlg": "NO",
+        "ifLetOut": codes.HP_SELF_OCCUPIED if self_occ else codes.HP_LET_OUT,
+    }
+    if meta and meta.tenants and not self_occ:
+        prop["TenantDetails"] = [
+            {"TenantSNo": i + 1, "NameofTenant": t.name, **({"PANofTenant": t.pan} if t.pan else {})}
+            for i, t in enumerate(meta.tenants)]
+    prop["Rentdetails"] = rent
     return {
-        "TypeOfHP": "L",
-        "GrossRentReceived": rent, "TaxPaidlocalAuth": muni, "AnnualValue": nav,
-        "StandardDeduction": std, "InterestPayable": interest,
-        "ArrearsUnrealizedRentRcvd": 0,
-        "TotalIncomeOfHP": rupees(ctx.heads["house_property"]["income"]),
+        "PropertyDetails": [prop],
+        "TotalIncomeChargeableUnHP": rupees(ctx.heads["house_property"]["income"]),
     }
 
 
@@ -265,7 +341,7 @@ def income_deductions(ctx: BuildContext) -> dict:
     oth = _other_sources(ctx)
     out.update(oth)
 
-    gti = sal["IncomeFromSal"] + hp["TotalIncomeOfHP"] + oth["IncomeOthSrc"]
+    gti = sal["IncomeFromSal"] + hp["TotalIncomeChargeableUnHP"] + oth["IncomeOthSrc"]
     if abs(gti - ctx.comp["gross_total_income"]) >= 10:
         ctx.log.error("INTERNAL_GTI_RECONCILE",
                       f"Gross total income {gti} vs engine {ctx.comp['gross_total_income']}. "

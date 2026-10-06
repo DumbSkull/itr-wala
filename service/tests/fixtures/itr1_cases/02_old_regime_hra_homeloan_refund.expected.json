@@ -34,6 +34,7 @@
             "MobileNo": 9876543210,
             "EmailAddress": "asha@example.com"
           },
+          "SecondaryAdd": "N",
           "DOB": "1990-05-14",
           "EmployerCategory": "OTH",
           "AadhaarCardNo": "999911112222"
@@ -42,6 +43,7 @@
           "ReturnFileSec": 11,
           "OptOutNewTaxRegime": "Y",
           "SeventhProvisio139": "N",
+          "AsseseeRepFlg": "N",
           "ItrFilingDueDate": "2026-07-31"
         },
         "ITR1_IncomeDeductions": {
@@ -49,7 +51,6 @@
           "Salary": 1200000,
           "PerquisitesValue": 0,
           "ProfitsInSalary": 0,
-          "IncomeNotified89A": 0,
           "AllwncExemptUs10": {
             "AllwncExemptUs10Dtls": [
               {
@@ -65,14 +66,49 @@
           "EntertainmentAlw16ii": 0,
           "ProfessionalTaxUs16iii": 2400,
           "IncomeFromSal": 967600,
-          "TypeOfHP": "S",
-          "GrossRentReceived": 0,
-          "TaxPaidlocalAuth": 0,
-          "AnnualValue": 0,
-          "StandardDeduction": 0,
-          "InterestPayable": 200000,
-          "ArrearsUnrealizedRentRcvd": 0,
-          "TotalIncomeOfHP": -200000,
+          "PropertyDetails": [
+            {
+              "HPSNo": 1,
+              "AddressDetailWithZipCode": {
+                "AddrDetail": "12B, Kothrud",
+                "CityOrTownOrDistrict": "Pune",
+                "StateCode": "19",
+                "CountryCode": "91",
+                "PinCode": 411038
+              },
+              "PropertyOwner": "SE",
+              "PropCoOwnedFlg": "NO",
+              "ifLetOut": "S",
+              "Rentdetails": {
+                "AnnualLetableValue": 0,
+                "RentNotRealized": 0,
+                "LocalTaxes": 0,
+                "TotalUnrealizedAndTax": 0,
+                "BalanceALV": 0,
+                "AnnualOfPropOwned": 0,
+                "ThirtyPercentOfBalance": 0,
+                "IntOnBorwCap": 200000,
+                "TotalDeduct": 200000,
+                "ArrearsUnrealizedRentRcvd": 0,
+                "IncomeOfHP": -200000,
+                "Section24B": {
+                  "Section24BDtls": [
+                    {
+                      "LoanTknFrom": "B",
+                      "BankOrInstnName": "State Bank of India",
+                      "LoanAccNoOfBankOrInstnRefNo": "38291045123",
+                      "DateofLoan": "2021-03-15",
+                      "TotalLoanAmt": 3500000,
+                      "LoanOutstndngAmt": 2650000,
+                      "InterestUs24B": 210000
+                    }
+                  ],
+                  "TotalInterestUs24B": 210000
+                }
+              }
+            }
+          ],
+          "TotalIncomeChargeableUnHP": -200000,
           "IncomeOthSrc": 28000,
           "OthersInc": {
             "OthersIncDtlsOthSrc": [
@@ -198,8 +234,9 @@
                 "TAN": "MUMH01234C",
                 "EmployerOrDeductorOrCollecterName": "HDFC Bank"
               },
+              "TDSSection": "94A",
               "AmtForTaxDeduct": 20000,
-              "DeductedYr": 2025,
+              "DeductedYr": "2025",
               "TotTDSOnAmtPaid": 2000,
               "ClaimOutOfTotTDSOnAmtPaid": 2000
             }
@@ -234,11 +271,11 @@
     "filing_date_assumed": "2026-07-10"
   },
   "warnings": [
-    "blocking:SCHEMA_NOT_VENDORED",
     "blocking:SOFTWARE_ID_UNREGISTERED",
     "info:ENGINE_ASSUMPTION",
     "info:ENGINE_ASSUMPTION",
     "info:ENGINE_NOTE",
+    "info:HP_ADDRESS_FROM_RESIDENCE",
     "info:HP_INTEREST_CAPPED",
     "info:INTEREST_DATE_SENSITIVE",
     "review:INPUT_CHECK",

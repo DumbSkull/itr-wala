@@ -1,13 +1,15 @@
 """Portal enumeration codes used by the ITR-1/ITR-4 JSON.
 
-EVERY value here must be confirmed against the vendored dept schema
-(service/schema/AY2026-27/*.json) - the schema-conformance tests do that
-automatically once the schema is present. Until then these are the codes as
-used in the AY 2024-25 / 2025-26 ITR-1 schemas and are marked UNVERIFIED in
-the /build-json response.
+Checked against the vendored AY 2026-27 ITR-1 schema (Ver1.1);
+test_schema_validation.py re-checks the enums on every run, so a schema
+revision that drops a code fails the suite.
 
 Keeping them in one module means a schema revision is a one-file diff.
 """
+
+# PropertyDetails[].ifLetOut
+HP_SELF_OCCUPIED = "S"
+HP_LET_OUT = "L"
 
 # FilingStatus.ReturnFileSec
 RETURN_SEC_139_1 = 11      # original, on time
@@ -44,6 +46,28 @@ OTHER_SOURCE_CODES = {
     "dividends": "DIV",          # Dividend
     "family_pension": "FAP",     # Family pension
     "other": "OTH",              # Any other (needs OthSrcOthNatOfInc text)
+}
+
+# TDSonOthThanSals.TDSonOthThanSal[].TDSSection - the subset an ITR-1/ITR-4
+# filer realistically has (full list in the schema's description). 192 salary
+# codes (92A/92B/92C) are excluded: salary TDS goes in TDSonSalaries.
+TDS_SECTION_CODES = {
+    "192A": "s.192A - PF withdrawal",
+    "193": "s.193 - interest on securities",
+    "194": "s.194 - dividends",
+    "94A": "s.194A - interest other than on securities (bank/post office FD)",
+    "94C": "s.194C - payments to contractors",
+    "4DA": "s.194DA - life insurance policy payout",
+    "4EE": "s.194EE - NSS deposits",
+    "4H": "s.194H - commission or brokerage",
+    "4-IA": "s.194I(a) - rent on plant and machinery",
+    "4-IB": "s.194I(b) - rent on land/building",
+    "4IB": "s.194IB - rent paid by certain individuals/HUF",
+    "94J-A": "s.194J(a) - fees for technical services",
+    "94J-B": "s.194J(b) - professional fees / royalty",
+    "94K": "s.194K - mutual fund units",
+    "94O": "s.194O - e-commerce operators",
+    "94R": "s.194R - business perquisites",
 }
 
 # FilingStatus.OptOutNewTaxRegime

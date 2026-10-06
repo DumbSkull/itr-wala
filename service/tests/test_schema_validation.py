@@ -50,7 +50,8 @@ class SchemaConformance(unittest.TestCase):
         loaded = self._need("ITR1")
         from service.json_builder import codes
         text = json.dumps(loaded.schema)
-        for code in list(codes.EXEMPT_ALLOWANCE_CODES) + list(codes.OTHER_SOURCE_CODES.values()):
+        for code in (list(codes.EXEMPT_ALLOWANCE_CODES) + list(codes.OTHER_SOURCE_CODES.values())
+                     + list(codes.TDS_SECTION_CODES)):
             with self.subTest(code=code):
                 self.assertIn(json.dumps(code), text)
 

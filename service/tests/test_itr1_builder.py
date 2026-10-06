@@ -44,7 +44,7 @@ class GoldenITR1(unittest.TestCase):
                 self.assertEqual(inc["GrossSalary"], inc["Salary"] + inc["PerquisitesValue"] + inc["ProfitsInSalary"])
                 self.assertEqual(inc["IncomeFromSal"], inc["NetSalary"] - inc["DeductionUs16"])
                 self.assertEqual(inc["GrossTotIncome"],
-                                 inc["IncomeFromSal"] + inc["TotalIncomeOfHP"] + inc["IncomeOthSrc"])
+                                 inc["IncomeFromSal"] + inc["TotalIncomeChargeableUnHP"] + inc["IncomeOthSrc"])
                 via = inc["DeductUndChapVIA"]
                 self.assertEqual(via["TotalChapVIADeductions"],
                                  sum(v for k, v in via.items() if k != "TotalChapVIADeductions"))

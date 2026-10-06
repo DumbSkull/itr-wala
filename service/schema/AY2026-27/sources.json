@@ -1,0 +1,16 @@
+{
+  "itr1_schema.json": {
+    "bytes": 148921,
+    "original_name": "ITR-1_2026_Main_V1.1.json",
+    "retrieved_at": "2026-10-06T16:01:12Z",
+    "sha256": "6a0ef9f64065431879dcc724869d8455a640bcf11279d1818eb19f11448ce763",
+    "url": "manual download (https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-06/ITR-1_2026_Main_V1.1.json)"
+  },
+  "itr4_schema.json": {
+    "bytes": 252342,
+    "original_name": "ITR-4_2026_Main_V1.1.json",
+    "retrieved_at": "2026-10-06T16:01:12Z",
+    "sha256": "5e9af50083ad92faa684a02ae51693189b43df16b92c1da5a184026fc5cdc2ac",
+    "url": "manual download (https://www.incometax.gov.in/iec/foportal/sites/default/files/2026-07/ITR-4_2026_Main_V1.1.json)"
+  }
+}

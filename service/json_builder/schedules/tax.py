@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections import Counter
 
+from .. import codes
 from ..context import BuildContext, rupees
 
 
@@ -89,11 +90,17 @@ def tds_on_others(ctx: BuildContext) -> dict | None:
     rows = ctx.filer.other_tds
     if not rows:
         return None
+    for i, r in enumerate(rows):
+        if r.tds_section not in codes.TDS_SECTION_CODES:
+            ctx.log.error("UNKNOWN_TDS_SECTION",
+                          f"TDS section code {r.tds_section!r} isn't one ITR-1/ITR-4 supports "
+                          "(see Form 26AS for the section).", f"filer.other_tds[{i}].tds_section")
     return {
         "TDSonOthThanSal": [{
             "EmployerOrDeductorOrCollectDetl": {"TAN": r.tan, "EmployerOrDeductorOrCollecterName": r.deductor_name},
+            "TDSSection": r.tds_section,
             "AmtForTaxDeduct": r.amount_paid,
-            "DeductedYr": r.deducted_year,
+            "DeductedYr": str(r.deducted_year),
             "TotTDSOnAmtPaid": r.tds_deducted,
             "ClaimOutOfTotTDSOnAmtPaid": r.tds_claimed,
         } for r in rows],

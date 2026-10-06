@@ -81,7 +81,8 @@
           "deductor_name": "HDFC Bank",
           "amount_paid": 40000,
           "tds_deducted": 4000,
-          "tds_claimed": 4000
+          "tds_claimed": 4000,
+          "tds_section": "94A"
         }
       ],
       "exempt_allowances": [],

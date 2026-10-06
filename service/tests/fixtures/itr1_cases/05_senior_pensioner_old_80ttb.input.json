@@ -84,7 +84,8 @@
           "deductor_name": "State Bank of India",
           "amount_paid": 120000,
           "tds_deducted": 12000,
-          "tds_claimed": 12000
+          "tds_claimed": 12000,
+          "tds_section": "94A"
         }
       ],
       "exempt_allowances": [],

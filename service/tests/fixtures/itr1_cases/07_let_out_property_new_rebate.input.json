@@ -74,7 +74,31 @@
       ],
       "other_tds": [],
       "exempt_allowances": [],
-      "verification_place": "Pune"
+      "verification_place": "Pune",
+      "house_property": {
+        "address": {
+          "addr_detail": "Flat 304, Lake View Apartments",
+          "city_or_town_or_district": "Nagpur",
+          "state_code": "19",
+          "pin_code": 440010
+        },
+        "tenants": [
+          {
+            "name": "Rohit Sharma"
+          }
+        ],
+        "home_loans": [
+          {
+            "lender_type": "B",
+            "lender_name": "HDFC Bank",
+            "loan_account_no": "HL0099887766",
+            "sanction_date": "2019-11-01",
+            "total_loan_amount": 2500000,
+            "outstanding_amount": 1700000,
+            "interest": 150000
+          }
+        ]
+      }
     }
   }
 }

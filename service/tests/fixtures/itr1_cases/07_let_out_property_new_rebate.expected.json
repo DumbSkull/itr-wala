@@ -34,6 +34,7 @@
             "MobileNo": 9876543210,
             "EmailAddress": "asha@example.com"
           },
+          "SecondaryAdd": "N",
           "DOB": "1990-05-14",
           "EmployerCategory": "OTH",
           "AadhaarCardNo": "999911112222"
@@ -42,6 +43,7 @@
           "ReturnFileSec": 11,
           "OptOutNewTaxRegime": "N",
           "SeventhProvisio139": "N",
+          "AsseseeRepFlg": "N",
           "ItrFilingDueDate": "2026-07-31"
         },
         "ITR1_IncomeDeductions": {
@@ -49,21 +51,61 @@
           "Salary": 1000000,
           "PerquisitesValue": 0,
           "ProfitsInSalary": 0,
-          "IncomeNotified89A": 0,
           "NetSalary": 1000000,
           "DeductionUs16": 75000,
           "DeductionUs16ia": 75000,
           "EntertainmentAlw16ii": 0,
           "ProfessionalTaxUs16iii": 0,
           "IncomeFromSal": 925000,
-          "TypeOfHP": "L",
-          "GrossRentReceived": 300000,
-          "TaxPaidlocalAuth": 12000,
-          "AnnualValue": 288000,
-          "StandardDeduction": 86400,
-          "InterestPayable": 150000,
-          "ArrearsUnrealizedRentRcvd": 0,
-          "TotalIncomeOfHP": 51600,
+          "PropertyDetails": [
+            {
+              "HPSNo": 1,
+              "AddressDetailWithZipCode": {
+                "AddrDetail": "Flat 304, Lake View Apartments",
+                "CityOrTownOrDistrict": "Nagpur",
+                "StateCode": "19",
+                "CountryCode": "91",
+                "PinCode": 440010
+              },
+              "PropertyOwner": "SE",
+              "PropCoOwnedFlg": "NO",
+              "ifLetOut": "L",
+              "TenantDetails": [
+                {
+                  "TenantSNo": 1,
+                  "NameofTenant": "Rohit Sharma"
+                }
+              ],
+              "Rentdetails": {
+                "AnnualLetableValue": 300000,
+                "RentNotRealized": 0,
+                "LocalTaxes": 12000,
+                "TotalUnrealizedAndTax": 12000,
+                "BalanceALV": 288000,
+                "AnnualOfPropOwned": 288000,
+                "ThirtyPercentOfBalance": 86400,
+                "IntOnBorwCap": 150000,
+                "TotalDeduct": 236400,
+                "ArrearsUnrealizedRentRcvd": 0,
+                "IncomeOfHP": 51600,
+                "Section24B": {
+                  "Section24BDtls": [
+                    {
+                      "LoanTknFrom": "B",
+                      "BankOrInstnName": "HDFC Bank",
+                      "LoanAccNoOfBankOrInstnRefNo": "HL0099887766",
+                      "DateofLoan": "2019-11-01",
+                      "TotalLoanAmt": 2500000,
+                      "LoanOutstndngAmt": 1700000,
+                      "InterestUs24B": 150000
+                    }
+                  ],
+                  "TotalInterestUs24B": 150000
+                }
+              }
+            }
+          ],
+          "TotalIncomeChargeableUnHP": 51600,
           "IncomeOthSrc": 0,
           "DeductionUs57iia": 0,
           "GrossTotIncome": 976600,
@@ -198,7 +240,6 @@
     "filing_date_assumed": "2026-07-15"
   },
   "warnings": [
-    "blocking:SCHEMA_NOT_VENDORED",
     "blocking:SOFTWARE_ID_UNREGISTERED",
     "info:ENGINE_ASSUMPTION",
     "info:ENGINE_ASSUMPTION",

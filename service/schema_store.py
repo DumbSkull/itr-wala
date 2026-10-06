@@ -37,7 +37,7 @@ def _sha256(p: Path) -> str:
 
 
 def _find_schema_ver(schema: Any) -> Optional[str]:
-    """The dept schemas pin SchemaVer as an enum/const inside the Form_ITRx
+    """The dept schemas pin SchemaVer as an enum/const/pattern inside the Form_ITRx
     definition. Walk the tree for the first such pin."""
     stack = [schema]
     while stack:
@@ -49,6 +49,9 @@ def _find_schema_ver(schema: Any) -> Optional[str]:
                     return str(sv["enum"][0])
                 if "const" in sv:
                     return str(sv["const"])
+                # AY 2026-27 schemas pin it as a bare regex, e.g. "pattern": "Ver1.0"
+                if isinstance(sv.get("pattern"), str) and sv["pattern"].startswith("Ver"):
+                    return sv["pattern"]
             stack.extend(node.values())
         elif isinstance(node, list):
             stack.extend(node)

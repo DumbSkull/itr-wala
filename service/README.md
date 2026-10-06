@@ -46,8 +46,9 @@ problems at once. `500` = our bug (schema violation, tampered schema file) - nev
 user as their mistake.
 
 **Warnings** carry a severity: `info`, `review` (show the user), `blocking` (the JSON must not be
-uploaded until resolved). Today every response carries at least `SOFTWARE_ID_UNREGISTERED`, and
-`SCHEMA_NOT_VENDORED` until the schema is fetched.
+uploaded until resolved). Today every response carries at least `SOFTWARE_ID_UNREGISTERED`. The AY 2026-27
+ITR-1 and ITR-4 schemas (file V1.1, `SchemaVer` Ver1.0) are vendored, so ITR-1 output is validated
+against the department's schema on every build.
 
 ## Design rules
 

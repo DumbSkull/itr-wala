@@ -11,31 +11,87 @@
       "residential_status": "resident",
       "filing_date": "2026-07-20",
       "income": {
-        "salary": {"gross": 1500000, "form16_17_1": 1450000, "form16_17_2": 50000, "form16_17_3": 0,
-                   "exempt_allowances": 120000, "professional_tax": 2500, "basic_plus_da": 700000},
-        "other_sources": {"savings_interest": 12000, "fd_interest": 30000}
+        "salary": {
+          "gross": 1500000,
+          "form16_17_1": 1450000,
+          "form16_17_2": 50000,
+          "form16_17_3": 0,
+          "exempt_allowances": 120000,
+          "professional_tax": 2500,
+          "basic_plus_da": 700000
+        },
+        "other_sources": {
+          "savings_interest": 12000,
+          "fd_interest": 30000
+        }
       },
-      "deductions": {"80c": 150000, "80ccd_2": 50000},
-      "taxes_paid": {"tds": 75000},
-      "source_totals": {"form16_gross_salary": 1500000, "form16_total_tds": 72000,
-                        "form26as_total_tds": 75000, "ais_total_tds": 75000, "ais_savings_interest": 12000}
+      "deductions": {
+        "80c": 150000,
+        "80ccd_2": 50000
+      },
+      "taxes_paid": {
+        "tds": 75000
+      },
+      "source_totals": {
+        "form16_gross_salary": 1500000,
+        "form16_total_tds": 72000,
+        "form26as_total_tds": 75000,
+        "ais_total_tds": 75000,
+        "ais_savings_interest": 12000
+      }
     },
     "filer": {
       "pan": "ABCPE1234F",
       "aadhaar_no": "999911112222",
-      "name": {"first_name": "Asha", "last_name": "Verma"},
+      "name": {
+        "first_name": "Asha",
+        "last_name": "Verma"
+      },
       "father_name": "Ramesh Verma",
       "dob": "1990-05-14",
-      "address": {"residence_no": "12B", "locality_or_area": "Kothrud", "city_or_town_or_district": "Pune",
-                  "state_code": "19", "pin_code": 411038, "mobile_no": "9876543210", "email": "asha@example.com"},
+      "address": {
+        "residence_no": "12B",
+        "locality_or_area": "Kothrud",
+        "city_or_town_or_district": "Pune",
+        "state_code": "19",
+        "pin_code": 411038,
+        "mobile_no": "9876543210",
+        "email": "asha@example.com"
+      },
       "employer_category": "OTH",
-      "bank_accounts": [{"ifsc": "HDFC0001234", "bank_name": "HDFC Bank", "account_no": "50100123456789",
-                         "account_type": "SB", "use_for_refund": true}],
-      "salary_tds": [{"tan": "PNEA12345B", "employer_name": "Example Tech Pvt Ltd",
-                      "income_chargeable": 1500000, "tds": 72000}],
-      "other_tds": [{"tan": "MUMH01234C", "deductor_name": "HDFC Bank", "amount_paid": 30000,
-                     "tds_deducted": 3000, "tds_claimed": 3000}],
-      "exempt_allowances": [{"section": "10(13A)", "amount": 120000}],
+      "bank_accounts": [
+        {
+          "ifsc": "HDFC0001234",
+          "bank_name": "HDFC Bank",
+          "account_no": "50100123456789",
+          "account_type": "SB",
+          "use_for_refund": true
+        }
+      ],
+      "salary_tds": [
+        {
+          "tan": "PNEA12345B",
+          "employer_name": "Example Tech Pvt Ltd",
+          "income_chargeable": 1500000,
+          "tds": 72000
+        }
+      ],
+      "other_tds": [
+        {
+          "tan": "MUMH01234C",
+          "deductor_name": "HDFC Bank",
+          "amount_paid": 30000,
+          "tds_deducted": 3000,
+          "tds_claimed": 3000,
+          "tds_section": "94A"
+        }
+      ],
+      "exempt_allowances": [
+        {
+          "section": "10(13A)",
+          "amount": 120000
+        }
+      ],
       "verification_place": "Pune"
     }
   }

@@ -70,6 +70,7 @@ def personal_info(ctx: BuildContext) -> dict:
         "AssesseeName": name,
         "PAN": f.pan,
         "Address": addr,
+        "SecondaryAdd": "N",
         "DOB": f.dob.isoformat(),
         "EmployerCategory": f.employer_category,
     }
@@ -88,6 +89,7 @@ def filing_status(ctx: BuildContext) -> dict:
         "ReturnFileSec": ctx.return_sec,
         "OptOutNewTaxRegime": codes.OPT_OUT_YES if ctx.regime == "old" else codes.OPT_OUT_NO,
         "SeventhProvisio139": "N",
+        "AsseseeRepFlg": "N",  # filing for oneself, not as a representative assessee
         "ItrFilingDueDate": ctx.due_date.isoformat(),
     }
     if ctx.return_sec == codes.RETURN_SEC_139_5:

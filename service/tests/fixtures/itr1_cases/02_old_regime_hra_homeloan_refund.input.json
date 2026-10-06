@@ -88,7 +88,8 @@
           "deductor_name": "HDFC Bank",
           "amount_paid": 20000,
           "tds_deducted": 2000,
-          "tds_claimed": 2000
+          "tds_claimed": 2000,
+          "tds_section": "94A"
         }
       ],
       "exempt_allowances": [
@@ -97,7 +98,20 @@
           "amount": 180000
         }
       ],
-      "verification_place": "Pune"
+      "verification_place": "Pune",
+      "house_property": {
+        "home_loans": [
+          {
+            "lender_type": "B",
+            "lender_name": "State Bank of India",
+            "loan_account_no": "38291045123",
+            "sanction_date": "2021-03-15",
+            "total_loan_amount": 3500000,
+            "outstanding_amount": 2650000,
+            "interest": 210000
+          }
+        ]
+      }
     }
   }
 }

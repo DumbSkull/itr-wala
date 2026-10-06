@@ -34,6 +34,7 @@
             "MobileNo": 9876543210,
             "EmailAddress": "asha@example.com"
           },
+          "SecondaryAdd": "N",
           "DOB": "1990-05-14",
           "EmployerCategory": "OTH",
           "AadhaarCardNo": "999911112222"
@@ -42,6 +43,7 @@
           "ReturnFileSec": 12,
           "OptOutNewTaxRegime": "N",
           "SeventhProvisio139": "N",
+          "AsseseeRepFlg": "N",
           "ItrFilingDueDate": "2026-07-31"
         },
         "ITR1_IncomeDeductions": {
@@ -49,14 +51,13 @@
           "Salary": 850000,
           "PerquisitesValue": 0,
           "ProfitsInSalary": 0,
-          "IncomeNotified89A": 0,
           "NetSalary": 850000,
           "DeductionUs16": 75000,
           "DeductionUs16ia": 75000,
           "EntertainmentAlw16ii": 0,
           "ProfessionalTaxUs16iii": 0,
           "IncomeFromSal": 775000,
-          "TotalIncomeOfHP": 0,
+          "TotalIncomeChargeableUnHP": 0,
           "IncomeOthSrc": 45000,
           "OthersInc": {
             "OthersIncDtlsOthSrc": [
@@ -182,8 +183,9 @@
                 "TAN": "MUMH01234C",
                 "EmployerOrDeductorOrCollecterName": "HDFC Bank"
               },
+              "TDSSection": "94A",
               "AmtForTaxDeduct": 40000,
-              "DeductedYr": 2025,
+              "DeductedYr": "2025",
               "TotTDSOnAmtPaid": 4000,
               "ClaimOutOfTotTDSOnAmtPaid": 4000
             }
@@ -229,7 +231,6 @@
     "filing_date_assumed": "2026-10-20"
   },
   "warnings": [
-    "blocking:SCHEMA_NOT_VENDORED",
     "blocking:SOFTWARE_ID_UNREGISTERED",
     "info:ENGINE_ASSUMPTION",
     "info:ENGINE_ASSUMPTION",

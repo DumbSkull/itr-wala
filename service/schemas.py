@@ -143,7 +143,9 @@ class OtherTDS(_Strict):
     amount_paid: int = Field(ge=0, description="Gross amount on which tax was deducted.")
     tds_deducted: int = Field(ge=0)
     tds_claimed: int = Field(ge=0, description="Portion claimed this year (usually == tds_deducted).")
-    deducted_year: int = Field(2025, ge=2010, le=2026)
+    tds_section: str = Field(description="Portal TDS section code from Form 26AS / 16A, e.g. '94A' for "
+                                         "s.194A bank interest. See json_builder/codes.py.")
+    deducted_year: int = Field(2025, ge=2008, le=2025, description="FY start year the tax was deducted in.")
 
     @field_validator("tan")
     @classmethod
@@ -173,6 +175,40 @@ class ExemptAllowance(_Strict):
     description: Optional[str] = Field(None, max_length=125, description="Required when section is 'OTH'.")
 
 
+class PropertyAddress(_Strict):
+    addr_detail: str = Field(min_length=1, max_length=50, description="Flat/house no., building, street.")
+    city_or_town_or_district: str = Field(min_length=1, max_length=50)
+    state_code: str = Field(pattern=r"^[0-9]{2}$")
+    pin_code: int = Field(ge=110000, le=999999)
+
+
+class HomeLoan(_Strict):
+    """One loan behind the s.24(b) interest claim - from the lender's interest certificate."""
+    lender_type: Literal["B", "I"] = Field(description="B = bank, I = other than bank.")
+    lender_name: str = Field(min_length=1, max_length=125)
+    loan_account_no: str = Field(pattern=r"^[0-9A-Za-z/-]{1,20}$")
+    sanction_date: date
+    total_loan_amount: int = Field(ge=0)
+    outstanding_amount: int = Field(ge=0, description="Outstanding as on 31 March 2026.")
+    interest: int = Field(ge=0, description="Interest for FY 2025-26 on this loan.")
+
+
+class Tenant(_Strict):
+    name: str = Field(min_length=1, max_length=125)
+    pan: Optional[str] = Field(None, pattern=r"^[A-Z]{5}[0-9]{4}[A-Z]$")
+
+
+class HouseProperty(_Strict):
+    """Portal-only details of the (single) property in income.house_property."""
+    address: Optional[PropertyAddress] = Field(
+        None, description="Omit for a self-occupied home you live in - the residential address is used.")
+    owner: Literal["SE", "MI", "SP", "OT"] = Field("SE", description="SE self, MI minor, SP spouse, OT other.")
+    co_owned: bool = False
+    share_percent: Optional[float] = Field(None, gt=0, le=100, description="Your share if co-owned.")
+    home_loans: list[HomeLoan] = Field(default_factory=list)
+    tenants: list[Tenant] = Field(default_factory=list)
+
+
 class RevisedReturn(_Strict):
     original_ack_no: str = Field(pattern=r"^[0-9]{15}$", description="Acknowledgement number of the original return.")
     original_filing_date: date
@@ -198,6 +234,8 @@ class FilerMetadata(_Strict):
         None, max_length=125,
         description="What income.other_sources.other is (e.g. 'interest on bonds'). Required if that field > 0.")
     exempt_agricultural_income: int = Field(0, ge=0)
+    house_property: Optional[HouseProperty] = Field(
+        None, description="Address/ownership/loan details for income.house_property. Needed when there is one.")
     revised: Optional[RevisedReturn] = None
     verification_place: str = Field(min_length=1, max_length=75)
 
