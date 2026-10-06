@@ -6,18 +6,26 @@ Status codes the private app relies on:
     200  success (always check warnings[]; severity 'blocking' = don't upload)
     422  the input needs to change - body is ErrorResponse{errors: [Issue]}
     500  our bug (schema violation / integrity) - never shown as user error
+
+/parse/* returns 200 with field proposals, or 422 ParseErrorResponse when
+the file can't be read (wrong password, scanned image, not a PDF).
 """
 
 from __future__ import annotations
 
-from fastapi import FastAPI, Query, Request
+from typing import Optional
+
+from fastapi import FastAPI, File, Form, Query, Request, UploadFile
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from . import core, engine
+from . import core, engine, parsers
 from .errors import BuildError
 from .json_builder import ay_registry
 from .schema_store import SchemaIntegrityError
+from .schemas_parse import ParseErrorResponse, ParseResponse
+
+MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 from .schemas import (BuildJsonRequest, BuildJsonResponse, ComputeRequest, ComputeResponse,
                       ErrorResponse, FormType, Issue, Severity)
 
@@ -70,3 +78,26 @@ def build_json(req: BuildJsonRequest,
                form: FormType = Query(...),
                ay: str = Query("2026-27", pattern=r"^\d{4}-\d{2}$")) -> BuildJsonResponse:
     return core.build_json(req, form, ay)
+
+
+@app.exception_handler(parsers.PdfUnreadable)
+async def _unreadable(_: Request, exc: parsers.PdfUnreadable) -> JSONResponse:
+    return JSONResponse(status_code=422,
+                        content=ParseErrorResponse(error=exc.code, message=exc.message).model_dump())
+
+
+async def _read(file: UploadFile) -> bytes:
+    data = await file.read(MAX_UPLOAD_BYTES + 1)
+    if len(data) > MAX_UPLOAD_BYTES:
+        raise parsers.PdfUnreadable("FILE_TOO_LARGE", "That file is over 10 MB - Form 16 and AIS PDFs are much smaller.")
+    return data
+
+
+@app.post("/parse/form16", response_model=ParseResponse, responses={422: {"model": ParseErrorResponse}})
+async def parse_form16(file: UploadFile = File(...), password: Optional[str] = Form(None)) -> ParseResponse:
+    return parsers.parse("form16", await _read(file), password)
+
+
+@app.post("/parse/ais", response_model=ParseResponse, responses={422: {"model": ParseErrorResponse}})
+async def parse_ais(file: UploadFile = File(...), password: Optional[str] = Form(None)) -> ParseResponse:
+    return parsers.parse("ais", await _read(file), password)

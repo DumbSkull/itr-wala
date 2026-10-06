@@ -40,6 +40,7 @@ python -m pytest                          # or: python -m unittest discover -s s
 | `GET /health` | engine version, AY, supported AYs |
 | `POST /compute` `{income}` | upstream computation, both regimes + recommendation. No identity data. |
 | `POST /build-json?form=ITR1&ay=2026-27` `{income, filer, regime}` | `{itr_json, form, ay, schema_version, schema_validated, warnings[], summary}` |
+| `POST /parse/form16`, `POST /parse/ais` (multipart `file`, optional `password`) | `{recognised, fields[{key, value, label, confidence, source{document, page, text}}], warnings[]}` - proposals only; the app shows each one for the user to confirm |
 
 **Errors.** `422` = the input must change: `{errors: [{code, severity, message, field}]}`, all
 problems at once. `500` = our bug (schema violation, tampered schema file) - never shown to the

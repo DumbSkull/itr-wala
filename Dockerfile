@@ -14,7 +14,7 @@ WORKDIR /app
 
 # deps first for layer caching
 COPY pyproject.toml ./
-RUN pip install --no-cache-dir "fastapi>=0.115,<1" "pydantic>=2.7,<3" "jsonschema>=4.22,<5" "uvicorn>=0.30,<1"
+RUN pip install --no-cache-dir "fastapi>=0.115,<1" "pydantic>=2.7,<3" "jsonschema>=4.22,<5" "uvicorn>=0.30,<1" "pdfplumber>=0.11,<1" "python-multipart>=0.0.9"
 
 COPY skills/itr-wala/scripts ./skills/itr-wala/scripts
 COPY service ./service
